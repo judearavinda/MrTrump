@@ -1,5 +1,7 @@
 import { Template } from 'meteor/templating';
 
+import sentiment from 'sentiment'
+
 import './body.html';
 var randomnumber1 = -1;
 var array = ["Fidel Castro is dead!","Happy Thanksgiving to everyone. We will, together, MAKE AMERICA GREAT AGAIN!",
@@ -27,9 +29,24 @@ Template.body.events({
   var imageMinimum = 4;
   var randomnumber2 = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
   var imageRandom = Math.floor(Math.random() * (imageMaximum - imageMinimum + 1)) + imageMinimum;
-  randomnumber1 = randomnumber2;
-
   var randommsg = array[randomnumber2];
+  //code for sentiment analysis
+  var r1 = sentiment(randommsg);
+  console.log(r1);
+  if (r1.score>0)
+  {
+    //positive image
+   console.log("Trump is happy");
+  }
+  else if (r1.score ==0 )
+  {
+    //neutral image
+    console.log("Trump is neutral");
+  }
+  else{
+    //negative
+    console.log("Trump is angry");
+  }
   $(".msg").text(randommsg);
 }
 
