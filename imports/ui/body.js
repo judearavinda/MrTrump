@@ -25,8 +25,8 @@ Template.body.events({
   console.log("kappa");
   var maximum = 15;
   var minimum = 0;
-  var imageMaximum = 0;
-  var imageMinimum = 4;
+  var imageMaximum = 5;
+  var imageMinimum = 1;
   var randomnumber2 = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
   var imageRandom = Math.floor(Math.random() * (imageMaximum - imageMinimum + 1)) + imageMinimum;
   var randommsg = array[randomnumber2];
@@ -37,15 +37,18 @@ Template.body.events({
   {
     //positive image
    console.log("Trump is happy");
+   $('body').css('background-image','url(http://i.imgur.com/0K8j1PJ.jpg)');
   }
-  else if (r1.score ==0 )
+  else if (r1.score == 0 )
   {
     //neutral image
     console.log("Trump is neutral");
+    $('body').css('background-image','url(http://i.imgur.com/6RK96R3.jpg)');
   }
-  else{
+  else if (r1.score < 0 ){
     //negative
     console.log("Trump is angry");
+    $('body').css('background-image','url(http://i.imgur.com/rD30b17.png)');
   }
   $(".msg").text(randommsg);
 }

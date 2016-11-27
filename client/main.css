@@ -2,3 +2,13 @@
 .mainButton {
   color: green;
 }
+.msg{
+  color:white;
+  text-shadow:1px 0 0;
+  padding: 6em;
+}
+.kek{
+  font-size: 3em;
+  color:white;
+  text-shadow:1px 0 0;
+}
